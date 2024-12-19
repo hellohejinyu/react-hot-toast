@@ -58,6 +58,13 @@ toast.dismiss = (toastId?: string) => {
 toast.remove = (toastId?: string) =>
   dispatch({ type: ActionType.REMOVE_TOAST, toastId });
 
+toast.update = (toastId: string, message: Renderable) => {
+  dispatch({
+    type: ActionType.UPDATE_TOAST,
+    toast: { id: toastId, message },
+  })
+};
+
 toast.promise = <T>(
   promise: Promise<T>,
   msgs: {
@@ -86,7 +93,7 @@ toast.promise = <T>(
       });
     });
 
-  return promise;
+  return id;
 };
 
 export { toast };
